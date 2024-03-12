@@ -50,7 +50,6 @@ body {
     max-width: 200px;
     display: block;
     background-color: #999999;
-    border-radius: 50%;
     position: absolute;
     animation: moveX 2s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
     z-index: -1;
@@ -106,7 +105,6 @@ body {
   }
 
 .credit p {
-    margin: 0; 
     display: flex;
     align-items: center;
     justify-content: center;
