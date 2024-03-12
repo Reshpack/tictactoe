@@ -1,2 +1,123 @@
-/* 
-#292625 */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+body {
+    background-color: #292625;
+    overflow: hidden;
+}
+/* Start up Page */
+.start-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    width: 100%;
+}
+
+.start-page h1,
+.start-page p {
+    text-align: center; 
+}
+
+.start-page h1 {
+    color: #E70A27;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.start-page p {
+    color: #EAB52A;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.start-page img {
+    max-width: 200px;
+    display: block;
+    background-color: #999999;
+    border-radius: 50%;
+    position: absolute;
+    animation: moveX 2s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes moveX {
+    from { left: 0; }
+    to { left: calc(100% - 190px); } /* Adjusted to stop before reaching the right edge */
+}
+
+@keyframes moveY {
+    from { top: 0; }
+    to { top: calc(100vh - 200px); } /* Adjusted to stop before reaching the bottom edge of the viewport */
+}
+
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+/* Game */
+
+
+
+/* Footer */
+.credit {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center; 
+}
+
+.credit a:active::before,
+.credit a:active::after,
+.credit a:visited {
+  color: #E70A27; 
+} 
+
+.credit a {
+    text-decoration: none;
+  }
+
+.credit p {
+    margin: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #EAB52A;
+}
+
+.credit img {
+    margin-left: 5px; 
+    transition: transform 0.3s ease;
+}
+
+.credit img:hover {
+    transform: scale(1.2) rotate(360deg);
+}
