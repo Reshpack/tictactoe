@@ -78,3 +78,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click event listener to restart button
     document.getElementById('restartButton').addEventListener('click', restartGame);
 });
+
+// Return function
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to handle back button click
+    document.getElementById('menuButton').addEventListener('click', function() {
+        document.getElementById('game').classList.add('hidden');
+        document.getElementById('startPage').classList.remove('hidden');
+    });
+});
+
+// I don't know why you have to click the screen again when yu press the back button and want to play again
+// otherwise it'll glitch and keep going back and forth
