@@ -10,53 +10,37 @@ document.addEventListener('keydown', function(event) {
 });
 
 // Game
-const cells = document.querySelector(".cell");
-const statusText = document.querySelector("#statusText");
-const restartButton = document.querySelector("#restartButton");
-const returnMenu = document.querySelector("#returnMenu")
-const winConditions = [
-    [0, 1 ,2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7], 
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
+window.addEventListener('DOMContentLoaded', () => {
+    const cells = Array.from(document.querySelector(".cell"));
+    const playerDisplay = document.querySelector(".display-player");
+    const resetButton = document.querySelector("#resetButton");
+    const menuButton = document.querySelector("#menuButton");
 
-let options = ["", "", "", "", "", "", "", ""];
-let currentPlayer = "X"
-let running = false;
+    let board = ["", "", "", "", "", "", "", "", ""];
+    let currentPlayer = "X";
+    let isGameActive = true;
 
-initialiseGame();
+    const PLAYERX_WON = "PLAYERX_WON";
+    const PLAYERO_WON = "PLAYER0_WON";
+    const TIE = "TIE";
 
-function initialiseGame() {
-    cells.forEach(cell => cell.addEventListener("click", cellClicked));
-    restartButton.addEventListener("click", restartGame);
-    statusText.textContent = `${currentPlayer}'s turn`
-};
+    const winningConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6], 
+    ];
 
-function cellClicked() {
     
-};
 
-function updateCell(cell, index) {
+    cells.forEach((cell, index) => {
+        cell.addEventListener("click", () => UserActivation(cell, index));
+    });
 
-};
 
-function changePlayer() {
-
-};
-
-function checkWinner() {
-
-};
-
-function restartGame() {
-
-};
-
-function menuReturn() {
-
-}
+    resetButton.addEventListener("click", resetBoard);
+});

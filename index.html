@@ -15,20 +15,23 @@
     </div>
     <div class="game hidden" id="game">
         <h1>Tic Tac Toe</h1>
-        <div id="cellContainer">
-            <div cellIndex="0" class="cell"></div>
-            <div cellIndex="1" class="cell"></div>
-            <div cellIndex="2" class="cell"></div>
-            <div cellIndex="3" class="cell"></div>
-            <div cellIndex="4" class="cell"></div>
-            <div cellIndex="5" class="cell"></div>
-            <div cellIndex="6" class="cell"></div>
-            <div cellIndex="7" class="cell"></div>
-            <div cellIndex="8" class="cell"></div>
+        <div class="display">
+            Player <span class="display-player playerX">X</span>'s turn
         </div>
-        <h2 id="statusText"></h2>
-        <button id="restartButton"></button>
-        <button id="returnMenu"></button>
+        <div id="cellContainer">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="display announcer hide"></div>
+        <button id="restartButton">Restart</button>
+        <button id="menuButton">Back</button>
     </div>
     <div class="credit">
         <p>By <a href="https://github.com/Reshpack">@Reshpack</a> for <a href="https://www.theodinproject.com/">The Odin Project</a><img src="images/github.png" alt="" style="width: 30px;"></p>
