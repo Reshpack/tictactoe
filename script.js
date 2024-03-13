@@ -10,94 +10,71 @@ document.addEventListener('keydown', function(event) {
 });
 
 // Game
-window.addEventListener('DOMContentLoaded', () => {
-    const cells = Array.from(document.querySelector(".cell"));
-    const playerDisplay = document.querySelector(".display-player");
-    const resetButton = document.querySelector("#resetButton");
-    const menuButton = document.querySelector("#menuButton");
-    const announcer = document.querySelector(".announcer");
-
-    let board = ["", "", "", "", "", "", "", "", ""];
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize variables
     let currentPlayer = 'X';
-    let isGameActive = true;
+    let cells = document.querySelectorAll('.cell');
+    let winner = null;
 
-    const PLAYERX_WON = "PLAYERX_WON";
-    const PLAYERO_WON = "PLAYER0_WON";
-    const TIE = "TIE";
+    // Function to check for a win
+    function checkWin() {
+        const winPatterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6]             // Diagonals
+        ];
 
-    const winningConditions = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6], 
-    ];
-
-    function handleResultValidation() {
-        let roundWon = false;
-        for (let i = 0; i <= 7; i++) {
-            const winningConditions = winningConditions[i];
-            const a = board[winningConditions[0]];
-            const b = board[winningConditions[1]];
-            const c = board[winningConditions[2]];
-            if(a === '' || b === '' || c === '') {
-                continue
-            }
-            if(a === b && b === c) {
-                roundWon = true;
-                break;
+        for (let pattern of winPatterns) {
+            const [a, b, c] = pattern;
+            if (cells[a].textContent === currentPlayer &&
+                cells[b].textContent === currentPlayer &&
+                cells[c].textContent === currentPlayer) {
+                cells[a].style.backgroundColor = cells[b].style.backgroundColor = cells[c].style.backgroundColor = '#E70A27';
+                return currentPlayer;
             }
         }
 
-        if (roundWon) {
-            announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
-            isGameActive = false;
-            return;
-         }
-
-        if (!board.includes(''))
-            announce(TIE);
-    }
-
-    const announce = (type) => {
-        switch(type) {
-            case PLAYERO_WON:
-                announcer.innerHTML = 'Player <span class="playerO">O</span> Won!';
-                break;
-            case PLAYERX_WON:
-                announcer.innerHTML = 'Player <span class="playerX">X</span> Won!';
-                break;
-            case TIE:
-                announcer.innerHTML = 'Tie!';
+        // Check for draw
+        if ([...cells].every(cell => cell.textContent !== '')) {
+            return 'draw';
         }
-        announcer.classList.remove('hide');
+
+        return null;
     }
 
-
-    const changePlayer = () => {
-        playerDisplay.classList.remove(`player${currentPlayer}`);
-        currentPlayer = currentPlayer === 'X' ? "O" : 'X';
-        playerDisplay.innerText = currentPlayer;
-        playerDisplay.classList.add(`player${currentPlayer}`);
-    }
-
-    const UserAction = (cell, index) => {
-        if(isValidAction(cell) && isGameActive) {
-            cell.innerText = currentPlayer;
-            cell.classList.add(`player${currentPlayer}`);
-            updateBoard(index);
-            handleResultValidation();
-            changePlayer();
+    // Function to handle cell click
+    function cellClick(event) {
+        const cell = event.target;
+        if (cell.textContent === '' && !winner) {
+            cell.textContent = currentPlayer;
+            winner = checkWin();
+            if (winner === 'draw') {
+                document.querySelector('.display').textContent = "It's a draw!";
+            } else if (winner) {
+                document.querySelector('.display').textContent = `Player ${winner} wins!`;
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                document.querySelector('.display').textContent = `Player ${currentPlayer}'s turn`;
+            }
         }
     }
 
-    cells.forEach((cell, index) => {
-        cell.addEventListener("click", () => UserAction(cell, index));
+    // Add click event listeners to cells
+    cells.forEach(cell => {
+        cell.addEventListener('click', cellClick);
     });
 
+    // Function to restart the game
+    function restartGame() {
+        cells.forEach(cell => {
+            cell.textContent = '';
+            cell.style.backgroundColor = '#0FC0AD';
+        });
+        currentPlayer = 'X';
+        winner = null;
+        document.querySelector('.display').textContent = `Player ${currentPlayer}'s turn`;
+    }
 
-    resetButton.addEventListener("click", resetBoard);
+    // Add click event listener to restart button
+    document.getElementById('restartButton').addEventListener('click', restartGame);
 });

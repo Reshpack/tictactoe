@@ -92,6 +92,7 @@ body {
 .game h1 {
     margin-top: 20px;
     color: #E70A27;
+    font-size: 60px;
 }
 
 .cell {
@@ -114,9 +115,34 @@ body {
     text-align: center;
 }
 
+.hide {
+    display: none;
+}
+
+.display {
+    color: #EAB52A;
+    font-size: 30px;
+}
 
 /* game buttons */
+#restartButton {
+    margin: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 150px;
+    background: linear-gradient(#04E474, #04E474 40%, #048C04 80%, #048444 80%);
+}
 
+#menuButton {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 150px;
+    background: linear-gradient(#C8465B, #C8465B 40%, #BC0404 80%, #BC0404 80%);
+}
 
 /* Footer */
 .credit {
