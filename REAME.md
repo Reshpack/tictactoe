@@ -1,0 +1,1 @@
+Created with an arcade format in mind and wanted some elements i've been wanting to learn like start screen with a functional button and a button that goes back into the main screen. The cat bouncing around was hard to learn but luckily there a many website that have premade css animations to save time
