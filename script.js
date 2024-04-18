@@ -11,7 +11,7 @@ document.addEventListener('keydown', function(event) {
 
 // Game
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize variables
+    // Initialise variables
     let currentPlayer = 'X';
     let cells = document.querySelectorAll('.cell');
     let winner = null;
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.display').textContent = `Player ${currentPlayer}'s turn`;
     }
 
-    // Add click event listener to restart button
+    // restart button
     document.getElementById('restartButton').addEventListener('click', restartGame);
 });
 
@@ -88,5 +88,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// I don't know why you have to click the screen again when yu press the back button and want to play again
-// otherwise it'll glitch and keep going back and forth
