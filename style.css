@@ -78,6 +78,7 @@ body {
     display: none;
 }
 
+/* Bottom logo animation */
 
 
 /* Game */
@@ -125,6 +126,14 @@ body {
 }
 
 /* game buttons */
+button {
+    transition: all 0.1s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
 #restartButton {
     margin: 20px;
     padding: 5px;
@@ -143,6 +152,33 @@ body {
     width: 150px;
     background: linear-gradient(#C8465B, #C8465B 40%, #BC0404 80%, #BC0404 80%);
 }
+
+#modes {
+    margin-top: 20px;
+    padding: 0 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#playerMode,
+#aiMode {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 150px;
+}
+
+#playerMode {
+    background: linear-gradient(#ff3399, #ff3399 40%, #CC0066 80%, #CC0066 80%)
+}
+
+#aiMode {
+    background: linear-gradient(#EAB52A, #EAB52A 40%, #CC9900 80%, #CC9900 80%);
+}
+
 
 /* Footer */
 .credit {
